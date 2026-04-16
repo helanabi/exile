@@ -1,6 +1,6 @@
 ## Overview
 
-A CLI tool that delays access to secrets to reduce impulsive behavior.
+A CLI tool that delays access to a secret to reduce impulsive behavior.
 
 ## Quick Start
 
@@ -19,6 +19,7 @@ abc123
 
 **Exile** was designed to enforce self-discipline and fight impulsive urges
 by delaying access to a password protected material.  
+
 For example it could be used to reduce addiction to various internet-related
 activities such as doom-scrolling, online shopping, pornography, video games,
 etc. by storing an account or locker password in `exile` and setting
@@ -48,7 +49,7 @@ is not invincible protection, it's making bypassing harder than waiting.
 ## Usage
 
 ```
-usage: exile [-h] [-c] [-d DELAY] [-f] [-r] [secret]
+usage: exile [-h] [-c] [-d DELAY] [-f] [-r] [-v] [secret]
 
 Delay access to a secret
 
@@ -61,20 +62,21 @@ options:
   -d, --delay DELAY  delay duration in minutes
   -f, --force        overwrite existing secret
   -r, --remove
+  -v, --version      show software version and copyright notice
 ```
 
 ## Examples
 
-* Store a secret with a 10-hours delay:
+* Store a secret with a 10-hours delay:  
 `$ exile --delay=600 mypassword`
 
-* Start unlock timer:
+* Start unlock timer:  
 `$ exile`
 
-* Cancel unlock request:
+* Cancel unlock request:  
 `$ exile --cancel`
 
-* Remove secret:
+* Remove secret:  
 `$ exile --remove`
 
 ## Storage
@@ -85,5 +87,5 @@ options:
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 or later.
+This project is licensed under the GNU General Public License v3.0 or later.  
 See the COPYING file for details.
