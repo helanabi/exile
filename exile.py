@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import sys
 import time
 from pathlib import Path
 from cryptography.fernet import Fernet, InvalidToken
@@ -100,9 +101,6 @@ def print_time(amount, unit):
 if __name__ == "__main__":
     try:
         main()
-    except InvalidToken:
-        print(f"Invalid data file: {DATA_FILE}", file=sys.stderr)
-        sys.exit(3)
     except Exception as e:
-        print(f"An unexpected error occured\n{e}", file=sys.stderr)
-        sys.exit(4)
+        print(e, file=sys.stderr)
+        sys.exit(1)
