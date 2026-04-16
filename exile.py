@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import argparse
 import json
@@ -6,7 +7,7 @@ import os
 import sys
 import time
 from pathlib import Path
-from cryptography.fernet import Fernet, InvalidToken
+from cryptography.fernet import Fernet
 
 def parse_args():
     parser = argparse.ArgumentParser(prog="exile",
@@ -19,8 +20,16 @@ def parse_args():
     parser.add_argument("-f", "--force", action="store_true",
                         help="overwrite existing secret")
     parser.add_argument("-r", "--remove", action="store_true")
+    parser.add_argument("-v", "--version", action="store_true",
+                        help="show software version and copyright notice")
     return parser.parse_args()
 
+VERSION = "Exile version 0.1.0"
+COPYRIGHT = """Copyright (C) 2026 Hassan El anabi
+Exile comes with ABSOLUTELY NO WARRANTY.
+You may redistribute copies of Exile
+under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING."""
 DATA_DIR = Path.home() / ".cache"
 DATA_FILE = DATA_DIR / "exile_data"
 MASTER_KEY = "REPLACE WITH MASTER KEY"
@@ -42,6 +51,11 @@ class Store:
 
 def main():
     args = parse_args()
+    if args.version:
+        print(VERSION)
+        print(COPYRIGHT)
+        return
+    
     store = Store(MASTER_KEY, DATA_FILE)
     
     if args.secret:
